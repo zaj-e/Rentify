@@ -1,7 +1,6 @@
-import 'package:auth_test/settings/user_preferences.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:auth_test/pages/booking/router.dart';
+import './navigation/router.dart';
 
 void main() async {
   runApp(MyApp(initRoute: '/app'));

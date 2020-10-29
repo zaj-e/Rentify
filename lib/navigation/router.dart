@@ -1,7 +1,7 @@
-import 'package:auth_test/pages/booking/home.dart';
-import 'package:auth_test/pages/booking/settings.dart';
-import 'package:auth_test/components/navigation.dart';
-import 'package:auth_test/visual/colors.dart';
+import './components.dart';
+import 'package:rentify/views/home.dart';
+import 'package:rentify/views/settings.dart';
+import 'package:rentify/constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class AppRouter extends StatelessWidget {
@@ -33,10 +33,11 @@ class AppRouter extends StatelessWidget {
         return null;
       },
       tabBar: CupertinoTabBar(
-          //UGLY, fix
-          inactiveColor: CupertinoColors.black,
-          activeColor: customColor.active,
-          items: tabs_display),
+        //UGLY, fix
+        inactiveColor: CupertinoColors.black,
+        activeColor: customColor.active,
+        items: tabs_display,
+      ),
     );
   }
 }
