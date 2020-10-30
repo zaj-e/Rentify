@@ -1,3 +1,5 @@
+import 'package:rentify/views/create_reservation.dart';
+
 import './components.dart';
 import 'package:rentify/views/home.dart';
 import 'package:rentify/views/settings.dart';
