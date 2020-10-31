@@ -70,7 +70,7 @@ class OfficeDetails extends StatelessWidget {
           height: 150.0,
           decoration: BoxDecoration(
               image: DecorationImage(
-                image: NetworkImage(value['picture']['large']),
+                image: NetworkImage(value['https://cdn.shopify.com/s/files/1/1684/4225/products/artificial_green_plant_wall_office4_1200x.png?v=1569079588']['large']),
                 fit: BoxFit.cover,
               ),
               borderRadius: BorderRadius.all(Radius.circular(90.0)),
