@@ -124,7 +124,10 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                       child: Align(
                         child: Text(
                           '400    1234    5678    90**',
-                          style: TextStyle(fontSize: 20, fontFamily: 'Credit'),
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Credit',
+                              color: Colors.white),
                         ),
                         alignment: Alignment.center,
                       ),
@@ -133,14 +136,38 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                       children: [
                         Expanded(
                           child: ListTile(
-                            leading: Text('Valid From'),
-                            title: Text('01/12'),
+                            leading: Text(
+                              'Valid From',
+                              style: TextStyle(
+                                  fontSize: 9,
+                                  fontFamily: 'Credit',
+                                  color: Colors.white),
+                            ),
+                            title: Text(
+                              '01/12',
+                              style: TextStyle(
+                                  fontSize: 9,
+                                  fontFamily: 'Credit',
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                         Expanded(
                           child: ListTile(
-                            leading: Text('Good Thru'),
-                            title: Text('31/15'),
+                            leading: Text(
+                              'Good Thru',
+                              style: TextStyle(
+                                  fontSize: 9,
+                                  fontFamily: 'Credit',
+                                  color: Colors.white),
+                            ),
+                            title: Text(
+                              '31/15',
+                              style: TextStyle(
+                                  fontSize: 9,
+                                  fontFamily: 'Credit',
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                       ],
@@ -148,7 +175,11 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                     Expanded(
                       child: Align(
                         child: Text(
-                          'Ricky Gutierrez',
+                          'RICKY GUTIERREZ',
+                          style: TextStyle(
+                              fontSize: 15,
+                              fontFamily: 'Credit',
+                              color: Colors.white),
                         ),
                         alignment: Alignment.centerLeft,
                       ),
