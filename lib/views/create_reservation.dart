@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/models/office.dart';
 import 'package:rentify/models/reservation.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class DateOption {
   DateTime selectedDate;
@@ -306,14 +308,38 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                   color: Colors.black54,
                   textColor: Colors.white,
                   child: Text('Confirm Reservation'),
-                  onPressed: () {
-                    int officeId = office.id ?? 100;
+                  onPressed: () async {
+                    int officeId = 104;
                     reservation = Reservation(
                         initialDate: start.selectedDate,
                         endDate: end.selectedDate,
                         officeId: officeId,
-                        accountId: 1);
+                        accountId: 100);
                     print(officeId);
+                    var url =
+                        'https://rentifyupc.azurewebsites.net/api/reservations/100';
+
+                    var body = jsonEncode({
+                      'initialDate': "2021-03-15T12:49:23",
+                      'finishDate': "2021-03-15T12:49:23",
+                      "status": true,
+                      "accountId": 100,
+                      "officeId": 100,
+                    });
+
+                    var response = await http.post(url,
+                        body: body
+                        // 'initialDate': reservation.initialDate.toString(),
+                        // 'finishDate': reservation.endDate.toString(),
+                        // 'status': reservation.status.toString(),
+                        // 'accountId': reservation.accountId.toString(),
+                        // 'officeId': 104.toString(),
+                        ,
+                        headers: {
+                          "Accept": "application/json",
+                          "content-type": "application/json"
+                        });
+                    print(response.body);
                   },
                 ),
               ),
