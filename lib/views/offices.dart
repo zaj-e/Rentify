@@ -20,6 +20,7 @@ class _OfficesState extends State<Offices> {
         headers: {'Accept': 'aplication/json'});
 
     setState(() {
+      print(response.body);
       var extractdata = json.decode(response.body);
       data = extractdata['results'];
     });
@@ -40,8 +41,8 @@ class _OfficesState extends State<Offices> {
           itemCount: data == null ? 0 : data.length,
           itemBuilder: (BuildContext context, i) {
             return ListTile(
-              title: Text(data[i]['address']),
-              subtitle: Text(data[0]['description']['capacity']['price']),
+              title: Text(data[0][i]['address']),
+              subtitle: Text(data[0][i]['description']),
               onTap: (){
                 Navigator.push(
                     context,
