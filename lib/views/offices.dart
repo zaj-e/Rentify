@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'create_reservation.dart';
+
 
 class Offices extends StatefulWidget {
   @override
@@ -78,6 +80,14 @@ class OfficeDetails extends StatelessWidget {
                   color: Colors.teal,
                   width: 4.0
               )
+          ),
+          child: CupertinoButton(
+            child: Text('Book Office'),
+            onPressed: () {
+              Navigator.of(context, rootNavigator: true).push(
+                  new CupertinoPageRoute(
+                      builder: (context) => CreateReservationPage()));
+            },
           ),
         ),
       ),
