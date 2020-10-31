@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/views/create_reservation.dart';
+import 'package:rentify/views/offices.dart';
 import './navigation/router.dart';
 
 void main() async {
@@ -22,6 +23,8 @@ class MyApp extends StatelessWidget {
         '/app': (BuildContext context) => AppRouter(),
         '/create_reservation': (BuildContext context) =>
             CreateReservationPage(),
+        '/offices': (BuildContext context)=>
+            Offices(),
       },
     );
   }
