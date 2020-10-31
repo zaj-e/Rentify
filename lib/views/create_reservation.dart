@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/models/office.dart';
+import 'package:rentify/models/reservation.dart';
 
 class DateOption {
   DateTime selectedDate;
@@ -35,16 +36,33 @@ class CreateReservationPage extends StatefulWidget {
 }
 
 class _CreateReservationPageState extends State<CreateReservationPage> {
+  final Office office;
   DateTime selectedDate = DateTime.now();
   DateTime now = DateTime.now();
 
   DateOption start;
   DateOption end;
+  Reservation reservation;
 
-  _CreateReservationPageState() {
+  _CreateReservationPageState({this.office}) {
     this.start = new DateOption(this.selectedDate, now);
     this.end = new DateOption(this.selectedDate.add(Duration(days: 120)),
         now.add(Duration(days: 60)));
+  }
+
+  double getOfficeMonthlyPrice() {
+    if (this.office == null) {
+      return 200;
+    }
+    return this.office.price;
+  }
+
+  int reservationDurationInDays() {
+    return end.selectedDate.difference(start.selectedDate).inDays;
+  }
+
+  int reservationDurationInMonths() {
+    return end.selectedDate.difference(start.selectedDate).inDays ~/ 30;
   }
 
   @override
@@ -58,10 +76,14 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
               leading: BackButton(),
               title: Text('Create Reservation'),
               centerTitle: true,
+              backgroundColor: Colors.teal,
             ),
             Container(
-              child: ElevatedButton(
-                  child: Text("Starting: ${start.selectedDate.day.toString()}/"
+              child: RaisedButton(
+                  // color: Colors.black,
+                  // textColor: Colors.white,
+                  child: Text(
+                      "Fecha inicial: ${start.selectedDate.day.toString()}/"
                       "${start.selectedDate.month.toString()}/"
                       "${start.selectedDate.year.toString()}"),
                   onPressed: () async {
@@ -76,8 +98,10 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
               width: double.infinity,
             ),
             Container(
-              child: ElevatedButton(
-                  child: Text("Ending: ${end.selectedDate.day.toString()}/"
+              child: RaisedButton(
+                  // color: Colors.black,
+                  // textColor: Colors.white,
+                  child: Text("Fecha final: ${end.selectedDate.day.toString()}/"
                       "${end.selectedDate.month.toString()}/"
                       "${end.selectedDate.year.toString()}"),
                   onPressed: () async {
@@ -95,7 +119,8 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
               width: 330,
               height: 200,
               child: Card(
-                color: Color.fromRGBO(23, 137, 205, 100),
+                // color: Color.fromRGBO(23, 137, 205, 100),
+                color: Colors.black54,
                 child: Column(
                   children: [
                     Row(
@@ -104,21 +129,42 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                           child: Column(
                             children: [
                               SizedBox(
-                                height: 42,
+                                height: 36,
                               ),
-                              Align(
-                                child: Icon(
-                                  CupertinoIcons.rectangle_split_3x3_fill,
-                                  size: 42,
-                                  color: Colors.amber,
-                                ),
-                                alignment: Alignment.bottomLeft,
+                              Row(
+                                children: [
+                                  SizedBox(
+                                    width: 20,
+                                  ),
+                                  Align(
+                                    child: Icon(
+                                      CupertinoIcons.rectangle_split_3x3_fill,
+                                      size: 42,
+                                      color: Colors.amber,
+                                    ),
+                                    alignment: Alignment.bottomLeft,
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ),
-                        Expanded(child: Text('Your bank name'))
+                        Expanded(
+                          child: Align(
+                            alignment: Alignment.topCenter,
+                            child: Text(
+                              'YOUR BILLING',
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontFamily: 'Credit',
+                                  color: Colors.white),
+                            ),
+                          ),
+                        )
                       ],
+                    ),
+                    SizedBox(
+                      height: 14,
                     ),
                     Expanded(
                       child: Align(
@@ -137,7 +183,7 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                         Expanded(
                           child: ListTile(
                             leading: Text(
-                              'Valid From',
+                              'VALID FROM',
                               style: TextStyle(
                                   fontSize: 9,
                                   fontFamily: 'Credit',
@@ -155,7 +201,7 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                         Expanded(
                           child: ListTile(
                             leading: Text(
-                              'Good Thru',
+                              'GOOD THRU',
                               style: TextStyle(
                                   fontSize: 9,
                                   fontFamily: 'Credit',
@@ -173,26 +219,106 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                       ],
                     ),
                     Expanded(
-                      child: Align(
-                        child: Text(
-                          'RICKY GUTIERREZ',
-                          style: TextStyle(
-                              fontSize: 15,
-                              fontFamily: 'Credit',
-                              color: Colors.white),
-                        ),
-                        alignment: Alignment.centerLeft,
+                      child: Row(
+                        children: [
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Align(
+                            child: Text(
+                              'RICKY GUTIERREZ',
+                              style: TextStyle(
+                                  fontSize: 15,
+                                  fontFamily: 'Credit',
+                                  color: Colors.white),
+                            ),
+                            alignment: Alignment.centerLeft,
+                          ),
+                        ],
                       ),
                     )
                   ],
                 ),
               ),
             ),
-            Container(
-              child: ElevatedButton(
-                child: Text('Confirm Reservation'),
+            Divider(
+              color: Colors.grey,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Align(
+                  alignment: Alignment.center,
+                  child: Text(
+                    'Datos de reserva',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+            ),
+            Divider(
+              color: Colors.grey,
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.only(left: 24.0, right: 0.0),
+              title: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '- Duracion: ${reservationDurationInMonths()} meses (${reservationDurationInDays()} dias)',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
               ),
-              width: double.infinity,
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.only(left: 24.0, right: 0.0),
+              title: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '- Precio mensual: \$${getOfficeMonthlyPrice()}',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.only(left: 24.0, right: 0.0),
+              title: Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  '- Total a pagar: \$${getOfficeMonthlyPrice() * reservationDurationInMonths()}',
+                  style: TextStyle(
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+            Divider(
+              color: Colors.grey,
+            ),
+            Expanded(
+              child: Container(
+                constraints: BoxConstraints.expand(),
+                child: RaisedButton(
+                  color: Colors.black54,
+                  textColor: Colors.white,
+                  child: Text('Confirm Reservation'),
+                  onPressed: () {
+                    int officeId = office.id ?? 100;
+                    reservation = Reservation(
+                        initialDate: start.selectedDate,
+                        endDate: end.selectedDate,
+                        officeId: officeId,
+                        accountId: 1);
+                    print(officeId);
+                  },
+                ),
+              ),
+              // width: double.infinity,
+              // height: double.infinity,
             )
           ],
         ),
