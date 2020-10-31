@@ -7,19 +7,23 @@ class DateOption {
   DateTime now;
   DateOption(this.selectedDate, this.now);
 
-  _selectDate(BuildContext context) async {
-    DateTime picked = await showDatePicker(
+  DateTime picked;
+
+  changeState() {
+    selectedDate = picked;
+  }
+
+  Future<bool> setDate(BuildContext context) async {
+    picked = await showDatePicker(
       context: context,
       initialDate: selectedDate, // Refer step 1
       firstDate: now,
-      lastDate: now.add(new Duration(days: 60)),
+      lastDate: now.add(new Duration(days: 120)),
     );
     if (picked != null && picked != selectedDate) {
-      selectedDate = picked;
+      return true;
     }
-    // setState(() {
-    //   selectedDate = picked;
-    // });
+    return false;
   }
 }
 
@@ -32,21 +36,15 @@ class CreateReservationPage extends StatefulWidget {
 
 class _CreateReservationPageState extends State<CreateReservationPage> {
   DateTime selectedDate = DateTime.now();
-  final now = DateTime.now();
+  DateTime now = DateTime.now();
 
-  final DateOption start = DateOption();
+  DateOption start;
+  DateOption end;
 
-  _selectDate(BuildContext context) async {
-    DateTime picked = await showDatePicker(
-      context: context,
-      initialDate: selectedDate, // Refer step 1
-      firstDate: now,
-      lastDate: now.add(new Duration(days: 60)),
-    );
-    if (picked != null && picked != selectedDate)
-      setState(() {
-        selectedDate = picked;
-      });
+  _CreateReservationPageState() {
+    this.start = new DateOption(this.selectedDate, now);
+    this.end = new DateOption(this.selectedDate.add(Duration(days: 120)),
+        now.add(Duration(days: 60)));
   }
 
   @override
@@ -61,11 +59,110 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
               title: Text('Create Reservation'),
               centerTitle: true,
             ),
-            Center(
-              child: Text('Home Page'),
+            Container(
+              child: ElevatedButton(
+                  child: Text("Starting: ${start.selectedDate.day.toString()}/"
+                      "${start.selectedDate.month.toString()}/"
+                      "${start.selectedDate.year.toString()}"),
+                  onPressed: () async {
+                    await start.setDate(context).then((value) {
+                      if (value) {
+                        setState(() {
+                          start.changeState();
+                        });
+                      }
+                    });
+                  }),
+              width: double.infinity,
             ),
-            RaisedButton(onPressed: () => _selectDate(context)),
-            RaisedButton(onPressed: () => DateOption.setDate(context))
+            Container(
+              child: ElevatedButton(
+                  child: Text("Ending: ${end.selectedDate.day.toString()}/"
+                      "${end.selectedDate.month.toString()}/"
+                      "${end.selectedDate.year.toString()}"),
+                  onPressed: () async {
+                    await end.setDate(context).then((value) {
+                      if (value) {
+                        setState(() {
+                          end.changeState();
+                        });
+                      }
+                    });
+                  }),
+              width: double.infinity,
+            ),
+            Container(
+              width: 330,
+              height: 200,
+              child: Card(
+                color: Color.fromRGBO(23, 137, 205, 100),
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: 42,
+                              ),
+                              Align(
+                                child: Icon(
+                                  CupertinoIcons.rectangle_split_3x3_fill,
+                                  size: 42,
+                                  color: Colors.amber,
+                                ),
+                                alignment: Alignment.bottomLeft,
+                              ),
+                            ],
+                          ),
+                        ),
+                        Expanded(child: Text('Your bank name'))
+                      ],
+                    ),
+                    Expanded(
+                      child: Align(
+                        child: Text(
+                          '400    1234    5678    90**',
+                          style: TextStyle(fontSize: 20, fontFamily: 'Credit'),
+                        ),
+                        alignment: Alignment.center,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: ListTile(
+                            leading: Text('Valid From'),
+                            title: Text('01/12'),
+                          ),
+                        ),
+                        Expanded(
+                          child: ListTile(
+                            leading: Text('Good Thru'),
+                            title: Text('31/15'),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: Align(
+                        child: Text(
+                          'Ricky Gutierrez',
+                        ),
+                        alignment: Alignment.centerLeft,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ),
+            Container(
+              child: ElevatedButton(
+                child: Text('Confirm Reservation'),
+              ),
+              width: double.infinity,
+            )
           ],
         ),
       ),
