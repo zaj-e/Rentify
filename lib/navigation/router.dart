@@ -1,4 +1,5 @@
 import 'package:rentify/views/create_reservation.dart';
+import 'package:rentify/views/reservation_list.dart';
 
 import './components.dart';
 import 'package:rentify/views/home.dart';
@@ -10,6 +11,7 @@ class AppRouter extends StatelessWidget {
   static final List<Widget Function(BuildContext)> tabs_function = [
     (context) => HomePage(),
     (context) => SettingsPage(),
+    (context) => ReservationListPage()
   ];
 
   static final List<BottomNavigationBarItem> tabs_display = [
@@ -21,6 +23,11 @@ class AppRouter extends StatelessWidget {
     NavigationComponents.customBottomNavigationBarItem(
       iconURI: 'assets/svg/settings.svg',
       title: 'Settings',
+      activeColor: customColor.active,
+    ),
+    NavigationComponents.customBottomNavigationBarItem(
+      iconURI: 'assets/svg/reservations.svg',
+      title: 'Reservations',
       activeColor: customColor.active,
     ),
   ];
