@@ -317,12 +317,13 @@ class _CreateReservationPageState extends State<CreateReservationPage> {
                         accountId: 100);
                     print(officeId);
                     var url =
-                        'https://rentifyupc.azurewebsites.net/api/reservations/100';
+                        // 'https://rentifyupc.azurewebsites.net/api/reservations/100';
+                        'http://10.0.2.2:5001/api/reservations/100';
 
                     var body = jsonEncode({
                       'initialDate': "2021-03-15T12:49:23",
                       'finishDate': "2021-03-15T12:49:23",
-                      "status": true,
+                      "status": "Pending",
                       "accountId": 100,
                       "officeId": 100,
                     });

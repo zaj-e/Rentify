@@ -8,7 +8,7 @@ class Register extends StatefulWidget{
   _CreateRegisterState createState() => _CreateRegisterState();
 }
 
-class _CreateRegisterState extends StatefulWidget{
+class _CreateRegisterState extends State<Register>{
   String name = '';
   String email = '';
   String user = '';

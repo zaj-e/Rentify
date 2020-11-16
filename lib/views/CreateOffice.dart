@@ -9,18 +9,21 @@ class CreateOffice extends StatefulWidget {
   @override
   _CreateOfficeState createState() => _CreateOfficeState();
 }
-Future<Office> createOffice(String nombre,String descripcion,String correo,String telefono,String tarifa) async{
+
+Future<Office> createOffice(String nombre, String descripcion, String correo,
+    String telefono, String tarifa) async {
   final String apiurl = 'rentifyAPI';
-  final response = await http.post(apiurl,body: {
-    "nombre":nombre,
-    "descripcion":descripcion,
-    "correo":correo,
-    "telefono":telefono,
-    "tarifa":tarifa
+  final response = await http.post(apiurl, body: {
+    "nombre": nombre,
+    "descripcion": descripcion,
+    "correo": correo,
+    "telefono": telefono,
+    "tarifa": tarifa
   });
-  
+
   return jsonDecode(response.body);
 }
+
 class _CreateOfficeState extends State<CreateOffice> {
   final formKey = GlobalKey<FormState>();
   final TextEditingController nombreController = TextEditingController();
@@ -51,18 +54,17 @@ class _CreateOfficeState extends State<CreateOffice> {
                 Align(
                   alignment: Alignment.topRight,
                   child: RaisedButton(
-                    onPressed: () {
+                    onPressed: () async {
                       final String nombre = nombreController.text;
                       final String descripcion = descripcionController.text;
                       final String correo = correoController.text;
                       final String telefono = telefonoController.text;
                       final String tarifa = tarifaController.text;
 
-                      final Office oficina = await createOffice(nombre, descripcion, correo, telefono, tarifa);
+                      final Office oficina = await createOffice(
+                          nombre, descripcion, correo, telefono, tarifa);
 
-                      setState(() {
-
-                      });
+                      setState(() {});
                     },
                     child: const Text('Publicar'),
                     color: Colors.blue,
