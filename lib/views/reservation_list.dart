@@ -35,7 +35,7 @@ class _ReservationListPageState extends State<ReservationListPage> {
     var response = await http.get(Uri.encodeFull(API.GET_OFFICE_URL + id),
         headers: API.DEFAULT_HEADERS
     );
-
+    print(response);
     setState(() {
       offices.add(json.decode(response.body));
     });
