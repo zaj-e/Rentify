@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rentify/models/office.dart';
+import 'package:rentify/navigation/router.dart';
 import 'package:rentify/views/register.dart';
 
 import 'home.dart';
@@ -39,7 +39,7 @@ class _CreateLoginState extends State<Login> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => HomePage()),
+                MaterialPageRoute(builder: (context) => AppRouter()),
               );
             },
           ),
