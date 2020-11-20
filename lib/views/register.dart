@@ -18,7 +18,7 @@ class _CreateRegisterState extends State<Register>{
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Login'),
+          title: Text('Register'),
         ),
         body: Center(
             child: Column(
@@ -42,7 +42,16 @@ class _CreateRegisterState extends State<Register>{
                     onChanged: (password) {
                       print("Contraseña: $password");
                     },
-                  )
+                  ),
+                  ElevatedButton(
+                    child: Text('Create'),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
+                    },
+                  ),
                 ]
             )
         ),
@@ -53,7 +62,6 @@ class _CreateRegisterState extends State<Register>{
             context,
             MaterialPageRoute(builder: (context) => Login()),
             );
-           }
           },
         ),
       ),
@@ -61,3 +69,4 @@ class _CreateRegisterState extends State<Register>{
     // TODO: implement createState
     throw UnimplementedError();
   }
+}
