@@ -1,4 +1,5 @@
 import 'package:rentify/views/create_reservation.dart';
+import 'package:rentify/views/office_list.dart';
 import 'package:rentify/views/reservation_list.dart';
 
 import './components.dart';
@@ -10,7 +11,7 @@ import 'package:flutter/cupertino.dart';
 class AppRouter extends StatelessWidget {
   static final List<Widget Function(BuildContext)> tabs_function = [
     (context) => HomePage(),
-    (context) => SettingsPage(),
+    (context) => OfficeListPage(),
     (context) => ReservationListPage()
   ];
 
@@ -22,7 +23,7 @@ class AppRouter extends StatelessWidget {
     ),
     NavigationComponents.customBottomNavigationBarItem(
       iconURI: 'assets/svg/settings.svg',
-      title: 'Settings',
+      title: 'Offices',
       activeColor: customColor.active,
     ),
     NavigationComponents.customBottomNavigationBarItem(
