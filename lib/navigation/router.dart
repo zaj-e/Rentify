@@ -22,7 +22,7 @@ class AppRouter extends StatelessWidget {
       activeColor: customColor.active,
     ),
     NavigationComponents.customBottomNavigationBarItem(
-      iconURI: 'assets/svg/settings.svg',
+      iconURI: 'assets/svg/office.svg',
       title: 'Offices',
       activeColor: customColor.active,
     ),
