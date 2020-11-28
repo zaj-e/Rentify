@@ -3,6 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:rentify/constants/api.dart';
+
+import 'detail_office.dart';
 
 class OfficeMini {
   String title;
@@ -21,10 +24,21 @@ class Item extends StatelessWidget {
   int id;
   Item({this.url, this.title, this.id});
 
+  Future<String> goToOffice(BuildContext context, String id) async {
+    var response = await http.get(Uri.encodeFull(API.GET_OFFICE_URL + id),
+        headers: API.DEFAULT_HEADERS);
+    print(response);
+    var office = json.decode(response.body);
+    Navigator.of(context, rootNavigator: true).push(
+        new CupertinoPageRoute(
+            builder: (context) =>
+                OfficeDetailPage(office)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () { goToOffice(context, this.id.toString()); },
       child: Stack(children: [
         Image.network(this.url),
         Text(this.title),
