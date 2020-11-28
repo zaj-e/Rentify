@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/models/office.dart';
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
 import 'login.dart';
 
 class Register extends StatefulWidget {

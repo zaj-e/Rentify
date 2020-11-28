@@ -2,11 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/navigation/router.dart';
 import 'package:rentify/views/auth/register.dart';
-<<<<<<< HEAD
-
-=======
->>>>>>> develop
-
 import '../office/home.dart';
 
 class Login extends StatefulWidget {
