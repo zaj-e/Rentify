@@ -6,6 +6,8 @@ import 'package:rentify/constants/api.dart';
 import 'package:http/http.dart' as http;
 import 'package:rentify/views/OfficeDetailPage.dart';
 
+import 'create_reservation.dart';
+
 
 class OfficeListPage extends StatefulWidget{
   @override
@@ -72,6 +74,14 @@ class OfficeListPageState extends State<OfficeListPage>{
                             Navigator.of(context, rootNavigator: true).push(
                                 new CupertinoPageRoute(
                                     builder: (context) => OfficeDetailPage(offices[i])));
+                          },
+                        ),
+                        TextButton(
+                          child: Text('RESERVAR'),
+                          onPressed: () {
+                            Navigator.of(context, rootNavigator: true).push(
+                                new CupertinoPageRoute(
+                                    builder: (context) => CreateReservationPage()));
                           },
                         ),
                         SizedBox(width: 8),
