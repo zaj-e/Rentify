@@ -8,6 +8,8 @@ class API {
       "https://rentifyupc.azurewebsites.net/api/reservations"; //http://localhost:5000/api/reservations - https://localhost:5001/api/reservations
   static const String GET_OFFICE_URL =
       "https://rentifyupc.azurewebsites.net/api/offices/";
-  static const String GET_OFFICES_URL =
-      "https://rentifyupc.azurewebsites.net/api/offices";
+  static const String GET_OFFICES_URL = "10.0.2.2:5001/api/offices";
+
+  static const String GET_MY_OFFICES_URL =
+      "http://10.0.2.2:5001/api/account/100/offices";
 }
