@@ -22,21 +22,25 @@ class _CreateRegisterState extends State<Register> {
         ),
         body: Center(
             child: Column(children: <Widget>[
+              Text("Nombre"),
           TextField(
             onChanged: (name) {
               print("Nombre: $name");
             },
           ),
+              Text("Email"),
           TextField(
             onChanged: (email) {
               print("Email: $email");
             },
           ),
+              Text("Usuario"),
           TextField(
             onChanged: (user) {
               print("Usuario: $user");
             },
           ),
+              Text("Contraseña"),
           TextField(
             onChanged: (password) {
               print("Contraseña: $password");

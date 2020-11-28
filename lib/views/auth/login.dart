@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/navigation/router.dart';
 import 'package:rentify/views/auth/register.dart';
-import '../office/home.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -22,12 +21,13 @@ class _CreateLoginState extends State<Login> {
         ),
         body: Center(
             child: Column(children: <Widget>[
-          Text("Inicio de Sesion"),
+              Text("Usuario"),
           TextField(
             onChanged: (user) {
               print("Usuario: $user");
             },
           ),
+              Text("Contraseña"),
           TextField(
             onChanged: (password) {
               print("Contraseña: $password");
