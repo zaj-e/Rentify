@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rentify/views/create_reservation.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -12,12 +11,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Center(
       child: CupertinoButton(
-        child: Text('Book Office'),
-        onPressed: () {
-          Navigator.of(context, rootNavigator: true).push(
-              new CupertinoPageRoute(
-                  builder: (context) => CreateReservationPage()));
-        },
+        child: Text(
+            'Es una pagina donde puedes ver highlight de oficinas, como la pagina principal de la tienda de steam. Tiene seccion de oficinas mejor calificadas, mas populares, etc.'),
       ),
     );
   }

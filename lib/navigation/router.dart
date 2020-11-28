@@ -1,10 +1,8 @@
-import 'package:rentify/views/create_reservation.dart';
-import 'package:rentify/views/office_list.dart';
-import 'package:rentify/views/reservation_list.dart';
+import 'package:rentify/views/office/home.dart';
+import 'package:rentify/views/office/list_offices.dart';
+import 'package:rentify/views/reservations/list_reservation.dart';
 
 import './components.dart';
-import 'package:rentify/views/home.dart';
-import 'package:rentify/views/settings.dart';
 import 'package:rentify/constants/colors.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -17,20 +15,30 @@ class AppRouter extends StatelessWidget {
 
   static final List<BottomNavigationBarItem> tabs_display = [
     NavigationComponents.customBottomNavigationBarItem(
+      iconURI: 'assets/svg/office.svg',
+      title: 'My Offices',
+      activeColor: customColor.active,
+    ),
+    NavigationComponents.customBottomNavigationBarItem(
+      iconURI: 'assets/svg/search.svg',
+      title: 'Search',
+      activeColor: customColor.active,
+    ),
+    NavigationComponents.customBottomNavigationBarItem(
       iconURI: 'assets/svg/home.svg',
       title: 'Home',
       activeColor: customColor.active,
     ),
     NavigationComponents.customBottomNavigationBarItem(
-      iconURI: 'assets/svg/office.svg',
-      title: 'Offices',
+      iconURI: 'assets/svg/reservations.svg',
+      title: 'My Reservations',
       activeColor: customColor.active,
     ),
     NavigationComponents.customBottomNavigationBarItem(
-      iconURI: 'assets/svg/reservations.svg',
-      title: 'Reservations',
+      iconURI: 'assets/svg/profile.svg',
+      title: 'Profile',
       activeColor: customColor.active,
-    ),
+    )
   ];
 
   @override

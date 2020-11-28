@@ -1,29 +1,37 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rentify/navigation/router.dart';
-import 'package:rentify/views/register.dart';
+import 'package:rentify/models/office.dart';
+import 'file:///C:/Users/Marcelo/usr/apps/Rentify-App/lib/views/auth/login.dart';
 
-import 'home.dart';
-
-class Login extends StatefulWidget {
+class Register extends StatefulWidget {
   @override
-  _CreateLoginState createState() => _CreateLoginState();
+  _CreateRegisterState createState() => _CreateRegisterState();
 }
 
-class _CreateLoginState extends State<Login> {
+class _CreateRegisterState extends State<Register> {
+  String name = '';
+  String email = '';
   String user = '';
   String password = '';
-  String admin = 'admin';
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Login'),
+          title: Text('Register'),
         ),
         body: Center(
             child: Column(children: <Widget>[
-          Text("Inicio de Sesion"),
+          TextField(
+            onChanged: (name) {
+              print("Nombre: $name");
+            },
+          ),
+          TextField(
+            onChanged: (email) {
+              print("Email: $email");
+            },
+          ),
           TextField(
             onChanged: (user) {
               print("Usuario: $user");
@@ -35,21 +43,21 @@ class _CreateLoginState extends State<Login> {
             },
           ),
           ElevatedButton(
-            child: Text('Login'),
+            child: Text('Create'),
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => AppRouter()),
+                MaterialPageRoute(builder: (context) => Login()),
               );
             },
           ),
         ])),
         floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.app_registration),
+          child: Icon(Icons.login),
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Register()),
+              MaterialPageRoute(builder: (context) => Login()),
             );
           },
         ),
