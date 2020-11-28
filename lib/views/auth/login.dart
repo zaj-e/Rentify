@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/navigation/router.dart';
-import 'file:///C:/Users/Marcelo/usr/apps/Rentify-App/lib/views/auth/register.dart';
+import 'package:rentify/views/auth/register.dart';
 
 import '../office/home.dart';
 
