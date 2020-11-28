@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _HomePageState() {
-    var url = 'http://10.0.2.2:5001/api/offices';
+    var url = 'https://rentify-upc.azurewebsites.net/api/offices';
     http.get(url).then((value) {
       // print(value.body);
       t = json.decode(value.body);
