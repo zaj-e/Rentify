@@ -26,8 +26,7 @@ class Item extends StatelessWidget {
     return InkWell(
       onTap: () {},
       child: Stack(children: [
-        Image.network(
-            'https://tmbidigitalassetsazure.blob.core.windows.net/rms3-prod/attachments/37/1200x1200/Potluck-Chicken-Vegetable-Soup_EXPS_FT20_15848_F_0110_1.jpg'),
+        Image.network(this.url),
         Text(this.title),
       ]),
     );
