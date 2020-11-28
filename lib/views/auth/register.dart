@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rentify/models/office.dart';
-import 'file:///C:/Users/Marcelo/usr/apps/Rentify-App/lib/views/auth/login.dart';
+
+import 'login.dart';
 
 class Register extends StatefulWidget {
   @override
