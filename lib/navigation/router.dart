@@ -15,10 +15,8 @@ class AppRouter extends StatelessWidget {
     (context) => OfficeListPage(),
     (context) => HomePage(),
     (context) => HomePage(),
-        (context) => OfficeListPage(),
-    (context) => OfficeListPage(),
     (context) => ReservationListPage(),
-  (context) => DetailAccountPage()
+    (context) => DetailAccountPage()
   ];
 
   static final List<BottomNavigationBarItem> tabs_display = [
