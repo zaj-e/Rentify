@@ -1,6 +1,7 @@
 import 'package:rentify/views/account/detail_account.dart';
 import 'package:rentify/views/office/create_office.dart';
 import 'package:rentify/views/office/home.dart';
+import 'package:rentify/views/office/list_my_offices.dart';
 import 'package:rentify/views/office/list_offices.dart';
 import 'package:rentify/views/reservations/create_reservation.dart';
 import 'package:rentify/views/reservations/list_reservation.dart';
@@ -11,6 +12,8 @@ import 'package:flutter/cupertino.dart';
 
 class AppRouter extends StatelessWidget {
   static final List<Widget Function(BuildContext)> tabs_function = [
+    (context) => OfficeListPage(),
+    (context) => HomePage(),
     (context) => HomePage(),
         (context) => OfficeListPage(),
     (context) => OfficeListPage(),

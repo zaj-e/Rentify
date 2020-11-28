@@ -12,4 +12,6 @@ class API {
       "https://rentifyupc.azurewebsites.net/api/offices";
   static const String USER_URL =
       "https://rentifyupc.azurewebsites.net/api/account/1";
+  static const String GET_MY_OFFICES_URL =
+      "http://10.0.2.2:5001/api/account/100/offices";
 }
