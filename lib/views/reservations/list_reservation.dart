@@ -58,7 +58,7 @@ class _ReservationListPageState extends State<ReservationListPage> {
     return Scaffold(
         appBar: AppBar(title: Text("Mis reservas")),
         body: ListView.builder(
-          itemCount: offices == null ? 0 : offices.length,
+          itemCount: offices == null || offices.length == 0 ? 0 : offices.length,
           itemBuilder: (BuildContext context, i) {
             return /*ListTile(
             title: Text(reservations[i]['initialDate']),
@@ -74,10 +74,8 @@ class _ReservationListPageState extends State<ReservationListPage> {
                       backgroundImage: NetworkImage(
                           'https://image.shutterstock.com/image-vector/post-office-icon-simple-illustration-600w-720113797.jpg'),
                     ),
-                    title: Text(offices[i]['address'].toString().toUpperCase() +
-                        ' - Por S/.' +
-                        offices[i]['price'].toString()),
-                    subtitle: Text(offices[i]['description']),
+                    title: Text(reservations[i]['officeId'] != null ? offices[i]['address'].toString().toUpperCase() + ' - Por S/.' + offices[i]['price'].toString() : 'NO-OFFICE'),
+                    subtitle: Text(reservations[i]['officeId']  != null ? offices[i]['description'] : 'NO-OFFICE-DESCRIPTION'),
                     onTap: () {
                       Navigator.of(context, rootNavigator: true).push(
                           new CupertinoPageRoute(

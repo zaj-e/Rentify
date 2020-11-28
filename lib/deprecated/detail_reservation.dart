@@ -29,7 +29,7 @@ class ReservationDetailPage extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.only(bottom: 8.0),
                         child: Text(
-                          'Dirección: ' + office['address'].toString().toUpperCase() + ' Piso ' + office['floor'].toString(),
+                          office["id"] != null ? 'Dirección: ' + office['address'].toString().toUpperCase() + ' Piso ' + office['floor'].toString() : 'Dirección: - Piso: -',
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16
@@ -49,13 +49,13 @@ class ReservationDetailPage extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'Precio: S/.' + office['price'].toString(),
+                        office["id"] != null ?  'Precio: S/.' + office['price'].toString() : 'Precio: -',
                         style: TextStyle(
                             color: Colors.grey[500]
                         ),
                       ),
                       Text(
-                        'Cuenta con una capacidad para ' + office['capacity'].toString() + ' personas.',
+                        office["id"] != null ? 'Cuenta con una capacidad para ' + office['capacity'].toString() + ' personas.' : ' - ',
                         style: TextStyle(
                             color: Colors.grey[500]
                         ),
@@ -63,7 +63,7 @@ class ReservationDetailPage extends StatelessWidget {
                       Container(
                         padding: EdgeInsets.only(top: 20),
                         child: Text(
-                          office['description'],
+                          office["id"] != null ? office['description'] : ' - ',
                         ),
                       ),
                     ],
@@ -74,7 +74,7 @@ class ReservationDetailPage extends StatelessWidget {
                   color: Colors.yellow[500]
                 ),
                 Text(
-                  office['score'].toString()
+                    office["id"] != null ? office['score'].toString() : ' - '
                 ),
               ],
             ),
